@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de Artistas{% endblock %}
+
+{% block content %}
+<h1>Artistas</h1>
+<a href="{% url 'artist_create' %}" class="btn btn-primary mb-3">Nuevo Artista</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>País</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for artist in artists %}
+        <tr>
+            <td><a href="{% url 'artist_detail' artist.pk %}">{{ artist.name }}</a></td>
+            <td>{{ artist.country }}</td>
+            <td>
+                <a href="{% url 'artist_update' artist.pk %}" class="btn btn-warning btn-sm">Editar</a>
+                <form action="{% url 'artist_delete' artist.pk %}" method="post" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

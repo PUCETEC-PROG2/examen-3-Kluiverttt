@@ -1,0 +1,8 @@
+<h1>{{ artist.name }}</h1>
+<p>País: {{ artist.country }}</p>
+<a href="{% url 'artist_update' artist.pk %}">Editar</a>
+<form action="{% url 'artist_delete' artist.pk %}" method="post">
+    {% csrf_token %}
+    <button type="submit">Eliminar</button>
+</form>
+<a href="{% url 'artist_list' %}">Volver a la lista</a>

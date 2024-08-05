@@ -1,0 +1,8 @@
+<h1>Álbumes</h1>
+<ul>
+    {% for album in albums %}
+    <li><a href="{% url 'album_detail' album.pk %}">{{ album.title }}</a> - {{ album.artist.name }}</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'album_create' %}">Nuevo Álbum</a>
+<a href="{% url 'artist_list' %}">Ver Artistas</a>
