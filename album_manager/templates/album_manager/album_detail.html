@@ -1,12 +1,21 @@
-<h1>{{ album.title }}</h1>
-    <p>Año de Lanzamiento: {{ album.release_year }}</p>
-    <p>Género: {{ album.genre }}</p>
-    <p>Artista: {{ album.artist.name }}</p>
-    <img src="{{ album.portada.url }}" alt="Portada del álbum" width="200">
-    <br>
-    <a href="{% url 'album_update' album.pk %}">Editar</a>
-    <form action="{% url 'album_delete' album.pk %}" method="post">
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="center-container">
+    <div class="card" style="width: 18rem;">
+    <img src="{{ album.portada.url }}" alt="Portada del álbum" width="250">
+    <div class="card-body">
+      <h5 class="card-title">{{ album.title }}</h5>
+      <p class="card-text">Genero: {{ album.genre }}</p>
+      <p class="card-text">Artista: {{ album.artist.name }}</p>
+      <a href="{% url 'album_update' album.pk %}" class="btn btn-primary">Editar Información</a>
+      <form action="{% url 'album_delete' album.pk %}" method="post">
         {% csrf_token %}
-        <button type="submit">Eliminar</button>
+        <button type="submit" class="btn btn-primary" >Eliminar</button>
     </form>
-    <a href="{% url 'album_list' %}">Volver a la lista</a>
+      <a href="{% url 'album_list' %}" class="btn btn-primary">Volver a la lista</a>
+    </div>
+  </div>
+
+{% endblock content %}
+

@@ -1,8 +1,10 @@
+{% extends "base.html" %}
+{% block content %} 
 <h1>Álbumes</h1>
-<ul>
-    {% for album in albums %}
-    <li><a href="{% url 'album_detail' album.pk %}">{{ album.title }}</a> - {{ album.artist.name }}</li>
-    {% endfor %}
-</ul>
-<a href="{% url 'album_create' %}">Nuevo Álbum</a>
-<a href="{% url 'artist_list' %}">Ver Artistas</a>
+{%  for album in albums  %}
+<ul class="list-group" style = "width: 600px">
+    <li class="list-group-item" width='50px'><a href="{% url 'album_detail' album.pk %}">{{ album.title }}</a> - {{ album.artist.name }}</li> 
+  </ul>
+{% endfor %}
+    
+{% endblock content %}

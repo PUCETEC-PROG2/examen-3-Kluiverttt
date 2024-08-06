@@ -1,8 +1,20 @@
-<h1>{{ artist.name }}</h1>
-<p>País: {{ artist.country }}</p>
-<a href="{% url 'artist_update' artist.pk %}">Editar</a>
-<form action="{% url 'artist_delete' artist.pk %}" method="post">
-    {% csrf_token %}
-    <button type="submit">Eliminar</button>
-</form>
-<a href="{% url 'artist_list' %}">Volver a la lista</a>
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">Rels B</h5>
+        <p class="card-text">País: {{ artist.country }}</p>
+        <a href="{% url 'artist_update' artist.pk %}" class="btn btn-primary">Editar Información</a>
+        <form action="{% url 'artist_delete' artist.pk %}" method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary" >Eliminar</button>
+        </form>
+        <a href="{% url 'artist_list' %}" class="btn btn-primary">Volver a la lista</a>
+    </div>
+</div>
+{% endblock content %}
+
+
+

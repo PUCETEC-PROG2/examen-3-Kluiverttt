@@ -1,3 +1,6 @@
+{% extends "base.html" %}
+
+{% block content %}
 <h1>Nuevo Artista</h1>
 <form method="post">
     {% csrf_token %}
@@ -5,3 +8,4 @@
     <button type="submit">Guardar</button>
 </form>
 <a href="{% url 'artist_list' %}">Volver a la lista</a>
+{% endblock content %}
